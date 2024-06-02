@@ -18,7 +18,14 @@ def create_contact():
           return (
             jsonify({"message": "You must include a first name, last name, and email."}), 400,
           )
-
+     new_contact = Contact(first_name=first_name, last_name=last_name, email=email)
+     try:
+        db.session.add(new_contact)
+        db.session.commit()
+     except Exception as e:
+          return jsonify({"message": str(e)}), 400
+     return jsonify({"message": "User created!"}), 201
+     
 if __name__ == "__main__":
    with app.app_context():
          db.create_all()
