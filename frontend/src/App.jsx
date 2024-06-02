@@ -1,16 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import ContactList from './ContactList'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [contacts, setContacts] = useState([])
 
-  return (
-    <>
-      
-    </>
-  )
+    useEffect(() => {
+      fetchContacts()
+    }, [])
+
+    const fetchContacts = async () => {
+      const response = await fetch("http://127.0.0.1:5000/contacts")
+      const data = await response.json()
+      setContacts(data.contacts)
+      console.log(data.contacts)
+    }
+
+  return <ContactList contacts={contacts} />
 }
 
 export default App
