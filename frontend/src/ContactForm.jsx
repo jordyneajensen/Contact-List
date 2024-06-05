@@ -6,8 +6,10 @@ const ContactForm = () => {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault()
 
+        
     }
 
   return <form onSubmit={onSubmit}>
