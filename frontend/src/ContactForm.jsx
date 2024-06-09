@@ -44,10 +44,10 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => {
         />
     </div>
     <div>
-        <label htmlFor='lirstName'>LastName:</label>
+        <label htmlFor='lastName'>LastName:</label>
         <input 
             type="text" 
-            id="lasstName" 
+            id="lastName" 
             value={lastName} 
             onChange={(e) => setLastName(e.target.value)}
         />
